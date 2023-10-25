@@ -37,7 +37,6 @@ def main():
                         fh_decrypted_message = parse_message(fh_decrypted_message)
 
                         client_identifier = fh_decrypted_message[0] #ID_C
-                        print(client_identifier)
                         client_ticket_duration_service = fh_decrypted_message[1] #T_A
                         requested_service = fh_decrypted_message[2] #S_R
                         third_random = fh_decrypted_message[3] #N3
@@ -52,6 +51,7 @@ def main():
                         sixth_message = [encryptAES(buffer, client_ticket_key_service)] #M4
                         
                         sixth_message_data = pickle.dumps(sixth_message)
+                        time.sleep(10)
                         print(">>A sexta mensagem foi enviada ao Cliente!\n")
                         conn.sendall(sixth_message_data)
             conn.close()
